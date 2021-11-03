@@ -47,7 +47,8 @@ Ideas:
 * A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September)
 * Added in BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October)
 
-### Summary of phase 1 forecasting MASE tuning against individual time series with "greybox" R MASE function
+### Summary of phase 1 forecasting MASE tuning against individual time series
+* The "mase_calculator.R" provided uses the MASE function from the <a href="https://cran.r-project.org/web/packages/greybox/index.html">greybox R package.</a> It's equivalent to MAE divided by a scaling factor, so I calculated the scaling factors for each of the 12 time series.
 * added cloud cover +/- 3 hours (MASE 0.6243, 16 October)
 * solar data from beginning of 2020 instead of from day 142 (MASE 0.6063, 17 October)
 * selected start month (0-8) for each building series (from 2020), added all possible weather variables, set Building 5 equal to 19 kW (MASE 0.5685, 18 October)
