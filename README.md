@@ -5,7 +5,9 @@ Forecast
 ========
 
 phase2-days.R is run with PHASE = 1 to check what the MASE is for phase 1. For the competition data, this was 0.5166. 
-Then the exact same approach is used with PHASE = 2 for Phase 2 to avoid bugs. Each phase takes about half an hour on my laptop.
+Then the exact same approach is used with PHASE = 2 for Phase 2 to avoid bugs. (Clearing the R workspace in between. I had
+a frustrating number of unreproducible results).
+Each phase takes about half an hour on my laptop.
 
 The final MASE for my phase 1 submission was 0.6320 and after getting access to the individual time series - 0.5166.
 
