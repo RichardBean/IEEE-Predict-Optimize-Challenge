@@ -185,8 +185,10 @@ Estimated total cost (3 November) -- $261,906
 |	large4	   |  25849         |                 |
 |	**Total** | **261906**     |                 |
 
-Errors
+Issues
 ======
+
+Having the buildings numbered 0, 1, 3, 4, 5, 6 was a bit confusing.
 
 Phase 1 of the competition had time zone issues. Until 4 October, the scheduling problem was in Melbourne time (UTC+10 or UTC+11) and the AEMO prices were in NEM time (UTC+10), while the ECMWF data was in UTC. 
 
