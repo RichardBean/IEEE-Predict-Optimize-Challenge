@@ -155,7 +155,7 @@ The objective function values for "liberal" and "very liberal" were lowest of th
 
 The other idea was to add a constraint stating that any relaxation (i.e. increase) in the maximum observed load over the month had to be at least counterbalanced by a decrease in the cost of electricity. But this seemed unnecessarily constraining. I decided to trust the forecast, which may be a risky approach, but also had the best shot at developing the best schedule.
 
-Estimated total cost (3 November) -- $261,906 = 26681 
+Estimated total cost (3 November) -- $261,906
 
 |	Case      | Estimated Cost | Actual Cost     |
 |:---------:|:--------------:|:---------------:|
