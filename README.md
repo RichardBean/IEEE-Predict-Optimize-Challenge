@@ -37,6 +37,25 @@ Ideas:
 * BOM also has paid data available for solar and other weather variables (hourly). 
 * The BOM data had to be scraped from the BOM website with some difficulty which was very kludgy - this probably discouraged some competitiors. I only joined on 9 Sep after seeing ECMWF data had been added; I use ECMWF data in my solar, electricity and bike-sharing demand forecasting.
 
+### Summary of phase 1 forecasting MASE with leaderboard
+* <a href="https://cran.r-project.org/web/packages/mgcv/index.html">GAM</a> - MASE 0.8752 then 0.8165 (10 September)
+* random forests with feature selection (MASE 0.6881, 17 September)
+* tried out XGBoost - slow and useless, and lots of hyperparameter training needed 
+* more feature selection and setting Building 4 equal to 1 kW (MASE 0.6626, 17 September)
+* tuning the start months for the buildings (MASE 0.6528, 20 September)
+* Using median forecasting with <a href="https://cran.r-project.org/web/packages/quantregForest/index.html">quantregForest</a> (MASE 0.6474, 27 September)
+* A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September)
+* Adding in the BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October)
+
+### Summary of phase 1 forecasting MASE tuning against time series
+* add cloud cover +/- 3 hours (MASE 0.6243)
+* solar data from beginning of 2020 instead of from day 142 (MASE 0.6063)
+* tuning the months for the buildings (selected from 2020) and adding all possible weather variables (MASE 0.5685)
+* fix up Solar5 data by filtering (MASE 0.5387)
+* train all solar and building data together (MASE 0.5220)
+* fix up Solar0 data by same filtering as for Solar5 (MASE 0.5207)
+* add in separate weekday variables (MASE 0.5166)
+
 ### Building Forecast
 
 * Buildings 4 and 5 are just set to the median values of October 2020 of 1 and 19 as they appear have no connection to time or weather at all. This is better in MASE terms than setting them to the average values.
