@@ -57,6 +57,7 @@ Ideas:
 * trained all solar and building data together after seeing the <a href="https://doi.org/10.1016/j.ijforecast.2019.02.002">Smyl and Hua paper</a> and competition text about training series together (MASE 0.5220, 30 October)
 * fixed up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
 * added in separate weekday variables (MASE 0.5166, 2 November)
+* for reference: ranger with mean rather median forecast: MASE 0.5xxx (3 November)
 
 ### Building Forecast
 
@@ -143,7 +144,7 @@ This was probably the winning approach for cost in Phase 1, as some competitiors
 
 5. **Very liberal** allows charging over peak and does not attempt to control the maximum of recurring + once off + charge effect. This would be the best approach if the forecast was perfect.
 
-Other approaches could be weighting buildings at 60% quantile, and solar at 40% quantile as in <a href="https://arxiv.org/abs/1810.11178">Bean and Khan (2018).</a> Bean and Khan also avoided any charging in peak, and operated off a net load forecast as in this challenge.
+Other approaches could be weighting buildings at 60% quantile, and solar at 40% quantile as in <a href="https://arxiv.org/abs/1810.11178">Bean and Khan (2018).</a> Bean and Khan also avoided any charging in peak, and operated off a net load forecast as in this challenge. I felt these values could be rather arbitrary.
 
 There is not really any way to know how "good" my phase 2 forecast was; so I just tested the last four approaches here with my final phase 1 data. 
 
