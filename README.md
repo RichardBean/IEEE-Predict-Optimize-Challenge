@@ -60,6 +60,7 @@ Ideas:
 * fixed up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
 * added in separate weekday variables (MASE 0.5166, 2 November)
 * for reference: ranger with mean rather median forecast: MASE 0.5387 (3 November)
+* for reference: with Building0 outliers fixed - MASE 0.5121 (3 November) -- hopeful of similar result on phase 2
 
 ### Building Forecast
 
@@ -138,7 +139,7 @@ I considered five approaches for building the submitted solution: conservative, 
 1. **Conservative** is just choosing the lowest recurring load and lowest recurring + once off load and evaluating cost using a naive or flat forecast. 
 This was probably the winning approach for cost in Phase 1, as some competitiors had winning results with no forecast, or a poor forecast, but seemed pointless to me as the organizers said quality of forecast should contribute to results in phase 2.
 
-2. **Forced discharge** forbids any charging in peak hours, and forces at least one of the two batteries to be discharging in every peak period. This was thought to avoid nasty surprises in the peak load as in phase 1 one of the actual observed values was 262 kW above my final forecast (i.e. forecast with 0.5166 MASE). However, although values drop randomly in and out of the building data, I hoped that there were no "outliers" in phase 2 as promised (although this "outlier" comment from the competition organizers probably referred to the repeated 1744.1 kW values in the Building 0 trace).
+2. **Forced discharge** forbids any charging in peak hours, and forces at least one of the two batteries to be discharging in every peak period. This was thought to avoid nasty surprises in the peak load as in phase 1 one of the actual observed values (period 2702 of 2880) was ~260 kW above my final forecast (i.e. forecast with 0.5166 MASE). However, although values drop randomly in and out of the building data, I hoped that there were no "outliers" in phase 2 as promised (although this "outlier" comment from the competition organizers probably referred to the repeated 1744.1 kW values in the Building 0 trace - periods 1710 to 1713 of 2880).
 
 3. **No forced discharge** forbids any charging in peak hours, but the MIQP solver decides whether to discharge or do nothing in those hours.
 
@@ -153,6 +154,22 @@ There is not really any way to know how "good" my phase 2 forecast was; so I jus
 The objective function values for "liberal" and "very liberal" were lowest of the approaches. But over all the 10 problems, the "no forced discharge" approach had a slightly lower cost as evaluated against the actual net load. Of course, the pool prices for Nov 2020 were quite different from the prices for Oct 2020, but I thought this "ad hoc" or "heuristic" approach was probably the best idea. 
 
 The other idea was to add a constraint stating that any relaxation (i.e. increase) in the maximum observed load over the month had to be at least counterbalanced by a decrease in the cost of electricity. But this seemed unnecessarily constraining. I decided to trust the forecast, which may be a risky approach, but also had the best shot at developing the best schedule.
+
+Estimated total cost (3 November) -- $261,906 = 26681 
+
+|	Case      | Estimated Cost | Actual Cost     |
+|:---------:|:--------------:|:---------------:|
+|	small0   	|  26681         |                 |
+|	small1   	|  26233         |                 |
+|	small2   	|  26251         |                 |
+|	small3   	|  26452         |                 |
+|	small4   	|  26107         |                 | 
+|	large0   	|  26265         |                 |
+|	large1    |  26666         |                 |
+|	large2 	  |  25389         |                 | 
+|	large3    |  26010         |                 |
+|	large4	   |  25849         |                 |
+|	**Total** | **261906**     |                 |
 
 Errors
 ======
