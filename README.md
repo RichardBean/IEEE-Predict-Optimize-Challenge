@@ -97,21 +97,18 @@ I considered that allowing the once-off activities to be in ANY of the 2880 peri
 
 I considered five approaches for building the submitted solution: conservative, forced discharge, no forced discharge, liberal and very liberal. 
 
-Conservative is just choosing the lowest recurring load and lowest recurring + once off load and evaluating cost using a naive or flat forecast. 
-
+1. **Conservative** is just choosing the lowest recurring load and lowest recurring + once off load and evaluating cost using a naive or flat forecast. 
 This was probably the winning approach for cost in Phase 1, as some competitiors had winning results with no forecast, or a poor forecast, but seemed pointless to me as the organizers said quality of forecast should contribute to results in phase 2.
 
-Forced discharge forbids any charging in peak hours, and forces at least one of the two batteries to be discharging in every peak period. This was thought to avoid nasty surprises in the peak load as in phase 1 one of the actual observed values was 262 kW above my final forecast (i.e. forecast with 0.5166 MASE).
+2. **Forced discharge** forbids any charging in peak hours, and forces at least one of the two batteries to be discharging in every peak period. This was thought to avoid nasty surprises in the peak load as in phase 1 one of the actual observed values was 262 kW above my final forecast (i.e. forecast with 0.5166 MASE). However, although values drop randomly in and out of the building data, I hoped that there were no "outliers" in phase 2 as promised (although this "outlier" comment from the competition organizers probably referred to the repeated 1744.1 kW values in the Building 0 trace).
 
-However, although values drop randomly in and out of the building data, I hoped that there were no "outliers" in phase 2 as promised (although this "outlier" comment from the competition organizers probably referred to the repeated 1744.1 kW values in the Building 0 trace).
+3. **No forced discharge** forbids any charging in peak hours, but the MIQP solver decides whether to discharge or do nothing in those hours.
 
-No forced discharge forbids any charging in peak hours, but the MIQP solver decides whether to discharge or do nothing in those hours.
+4. **Liberal** allows charging in peak, but the maximum of recurring + once off + charge effect for each period is limited to the maximum of recurring + once off load over all periods. This is to avoid nasty surprises when the solver thinks that a period has low underlying load and schedules a charge (due to a low price in that period) but then accidentally increases the maximum load over all periods, which can be very costly.
 
-Liberal allows charging in peak, but the maximum of recurring + once off + charge effect for each period is limited to the maximum of recurring + once off load over all periods. This is to avoid nasty surprises when the solver thinks that a period has low underlying load and schedules a charge (due to a low price in that period) but then accidentally increases the maximum load over all periods, which can be very costly.
+5. **Very liberal** allows charging over peak and does not attempt to control the maximum of recurring + once off + charge effect. This would be the best approach if the forecast was perfect.
 
-Very liberal allows charging over peak and does not attempt to control the maximum of recurring + once off + charge effect. This would be the best approach if the forecast was perfect.
-
-Other approaches could be weighting building at 60% quantile, and solar at 40% quantile as in <a href="https://arxiv.org/abs/1810.11178">Bean and Khan (2018).</a>
+Other approaches could be weighting building at 60% quantile, and solar at 40% quantile as in <a href="https://arxiv.org/abs/1810.11178">Bean and Khan (2018).</a> Bean and Khan also avoided any charging in peak, and operated off a net load forecast as in this challenge.
 
 There is not really any way to know how "good" my phase 2 forecast was; so I just tested the last four approaches here with my final phase 1 data. Although the objective function values for "liberal" and "very liberal" were lowest, over all the 10 problems the "no forced discharge" approach had a slightly lower cost. Of course, the pool prices for Nov 2020 were quite different from the prices for Oct 2020, but I thought this "ad hoc" or "heuristic" approach was probably the best idea. 
 
