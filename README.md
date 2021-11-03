@@ -63,6 +63,7 @@ Ideas:
 * added in separate weekday variables (MASE 0.5166, 2 November)
 * for reference: ranger with mean rather median forecast: MASE 0.5387 (3 November)
 * for reference: with Building0 outliers fixed (i.e. four 1744.1 kW building 0 values replaced by 100 kW) MASE 0.5121 (3 November) -- hopeful of similar result on phase 2
+* for reference: with Building 0 outliers of training 2020 NOT fixed in training - MASE for Phase TWO = X.XXXX compared to 0.6460 with outliers fixed in training (is this why people's forecasts went so wrong?)
 
 ### Building Forecast
 
