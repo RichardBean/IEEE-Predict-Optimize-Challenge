@@ -1,5 +1,5 @@
 # ieee-predict-optimize
-Code for IEEE-CIS Technical Challenge on Predict+Optimize for Renewable Energy Scheduling
+This is my code, data and approach for <a href="https://ieee-dataport.org/competitions/ieee-cis-technical-challenge-predictoptimize-renewable-energy-scheduling">IEEE-CIS Technical Challenge on Predict+Optimize for Renewable Energy Scheduling.</a> The competition ran from 1 July to 3 November 2021, although I only became involved on 9 September.
 
 Forecast
 ========
