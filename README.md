@@ -57,6 +57,7 @@ Ideas:
 * fixed up Solar5 data by filtering (MASE 0.5387, 24 October)
 * noticed that forecasting Solar0 and Solar5 as linear combinations of the other Solar variables was working better than my actual Solar0/5 prediction
 * noticed that some pairs of solar series were much more highly correlated than other pairs, and buildings 3/6 were also highly correlated
+* 27 October - was reminded about possibly using <a href="https://stats.stackexchange.com/questions/196653/assigning-more-weight-to-more-recent-observations-in-regression">exponential decay</a> from <a href="https://cbergmeir.com/talks/acml-tutorial/">Bergmeir's notes</a> - seemed that it would be quite useful for the buildings for 2020, or for solar panels degrading over time. In the process learned about the <a href="https://cran.r-project.org/web/packages/ranger/index.html">R "ranger" package</a> which allowed <a href="https://stats.stackexchange.com/questions/83104/weighting-more-recent-data-in-random-forest-model">weighted observations,</a> but more importantly multi-threaded quantile regression forest works in Windows, unlike with "quantregForest"
 * trained all solar and building data together after seeing the <a href="https://doi.org/10.1016/j.ijforecast.2019.02.002">Smyl and Hua paper</a> and competition text about training series together (MASE 0.5220, 30 October)
 * fixed up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
 * added in separate weekday variables (MASE 0.5166, 2 November)
