@@ -158,11 +158,11 @@ Errors
 
 Phase 1 of the competition had serious time zone issues.
 
-The writers/organizers did not seem to realize that their scheduling problem was in Melbourne time (UTC+10 or UTC+11), the AEMO prices were in NEM time (UTC+10) while the ECMWF data was in UTC. 
+The writers/organizers did not seem to realize that their scheduling problem was in Melbourne time (UTC+10 or UTC+11) and the AEMO prices were in NEM time (UTC+10), while the ECMWF data was in UTC. 
 
-The result was that the scheduling was actually taking place in the middle of the night in Melbourne (8pm-4am typically in Oct 2020). 
+The result was that the activity scheduling was taking place in the middle of the night in Melbourne instead of 9am-5pm Melbourne time, typically 8pm-4am in Oct 2020 (UTC+11).
 
-This made no sense to me. I was trying different things to improve the cost and nothing was working. The highest load was in the very first period (8pm) but all sorts of approaches weighting for this was not bringing the cost down at all.
+This made no sense to me. I was trying different things to improve the cost and nothing was working. The highest load was in the very first period (8pm) but all sorts of approaches weighting for this were not bringing the leaderboard cost down at all.
 
 It was only on 1 Oct that I learned that the "Optim_eval" output was supposed to correspond exactly with the leaderboard result.  Prior to this I thought this software was only a guide for competitors to evaluate their results and test validity.
 
@@ -173,11 +173,11 @@ Several bugs were corrected on Oct 25, a week before submissions closed.
 
 I only realized on 2 November that the recurring load did NOT cover Nov 30 or Dec 1 (Melbourne time) and the once-off load DID count Nov 30 and Dec 1 (Melbourne time, 9am-5pm) as peak periods, after inserting lots of System.out.println statements in the provided Java code. The Java code had changed at some point completely (ChronicsHandler.java and ChronicsScheduleChecker.java) to explicitly start on the first Monday and run for four complete weeks only, while many months such as Dec 2020 would have only three weeks complete.
 
-So even though this kind of solar and building challenge is very much my daily work, what seemed absolutely obvious and clear to the organizers was not obvious or clear to me. In Phase 1, there were many entries in the $480,000 range and I wondered if they had just misunderstood the time zones.
+So even though this kind of solar and building challenge is very much my daily work, what seemed absolutely obvious and clear to the organizers was not obvious or clear to me. In Phase 1, there were many entries clustered in the $480,000 range and I wondered if they had just misunderstood the time zones.
 
 The competitors found critical bugs (e.g. time zone problems, solar traces being added to buildings in phase 1 instead of subtracted, etc).
 
-I think I had some luck in joining at the correct time around 10 Sep after the ECMWF data was added. I had downloaded the files, ECMWF/ERA5 and BOM data on 10 August, and ten did nothing more until 10 Sep. I may not have bothered entering without the ECMWF data.
+I think I had some luck in joining at the correct time around 10 Sep after the ECMWF data was added. I had downloaded the files, ECMWF/ERA5 and BOM data on 10 August, and then did nothing more until 10 Sep. I may not have bothered entering without the ECMWF data.
 
 If I had to do it again, I'd let the "phase2flat_oct24" optimization run for much longer. 
 
