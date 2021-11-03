@@ -48,18 +48,18 @@ Ideas:
 * Adding in the BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October)
 
 ### Summary of phase 1 forecasting MASE tuning against individual time series with "greybox" R MASE function
-* add cloud cover +/- 3 hours (MASE 0.6243)
-* solar data from beginning of 2020 instead of from day 142, 17 October (MASE 0.6063)
-* tuning the months for the buildings (selected from 2020) and adding all possible weather variables, 18 October (MASE 0.5685)
-* fix up Solar5 data by filtering, 24 October (MASE 0.5387)
-* train all solar and building data together, 30 October (MASE 0.5220)
-* fix up Solar0 data by same filtering as for Solar5, 31 October (MASE 0.5207)
-* add in separate weekday variables, 2 November (MASE 0.5166)
+* add cloud cover +/- 3 hours (MASE 0.6243, 16 October)
+* solar data from beginning of 2020 instead of from day 142 (MASE 0.6063, 17 October)
+* tuning the months for the buildings (selected from 2020) and adding all possible weather variables, and Building 5 equal to 19 kW (MASE 0.5685, 18 October)
+* fix up Solar5 data by filtering (MASE 0.5387, 24 October)
+* train all solar and building data together after seeing Smyl and Hua paper and competition text about training series together (MASE 0.5220, 30 October)
+* fix up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
+* add in separate weekday variables (MASE 0.5166, 2 November)
 
 ### Building Forecast
 
 * Buildings 4 and 5 are just set to the median values of October 2020 of 1 and 19 as they appear have no connection to time or weather at all. This is better in MASE terms than setting them to the average values.
-* I picked start dates for Buildings 0, 1, 3, 6 -- months 5, 1, 4, 0 i.e. June, February, May, January of 2020. These result in the lowest MASE in Phase 1. I tried exponential decay in the "ranger" training to weight the newest observations higher, but this made no difference whatever. So they are all weighted equally. There doesn't seem to be any point in training with the November 2020 data, unless it's like a jack-in-the-box and everything at Monash comes back to life in November which seemed unlikely.
+* I picked start dates for Buildings 0, 1, 3, 6 -- months 5, 1, 4, 0 i.e. June, February, May, January of 2020. These result in the lowest MASE in Phase 1. I tried <a href="https://cbergmeir.com/talks/acml-tutorial/">exponential decay</a> in the "ranger" training to weight the newest observations higher, but any improvement was tiny. So all observations are all weighted equally. There doesn't seem to be any point in training with the November 2020 data, unless it's like a jack-in-the-box and everything at Monash comes back to life in November which seemed unlikely.
 * Holidays -- I wanted to weight Friday before Grand Final Day (23 Oct 2020) with a different weekend value - it seemed to affect some buildings but not others. So I left it out of the training data (ie weekend variable was set to NA). Melbourne Cup day (3 Nov 2020) was just modelled as a normal day as it didn't seem to have any effect in the previous years. Nothing special was done for other holidays of 2020 e.g. Easter - there didn't seem to be much difference.
 * I trained Buildings 0, 1, 3, and 6 together, used a kitchen sink variables approach, all variables plus 3 hours leading and lagging (except MSLP 1 hour leading and lagging), plus temperatures 24, 48 and 72 hours ago (<a href="https://eprints.qut.edu.au/95170/">Clements and Li 2016</a>), plus Fourier value of hour / day of year, plus day of week variable for each of seven days, plus weekend variable, plus Mon/Fri var, plus Tue/Wed/Thu var
 * However, this only predicts buildings 0 and 3 ultimately. The first period forecast for these buildings is taken from the last period of the training data, so we are sure to have that right. After that, the values are just repeated in blocks of four. 
