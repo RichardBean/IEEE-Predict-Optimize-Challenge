@@ -38,11 +38,11 @@ Ideas:
 * The BOM data had to be scraped from the BOM website with some difficulty which was very kludgy - this probably discouraged some competitiors. I only joined after seeing ECMWF data had been added; I use ECMWF data in my solar, electricity and bike-sharing demand forecasting.
 
 ### Summary of phase 1 forecasting MASE with leaderboard
-* <a href="https://cran.r-project.org/web/packages/mgcv/index.html">GAM</a> - MASE 0.8752 then 0.8165 (10 September)
+* <a href="https://cran.r-project.org/web/packages/mgcv/index.html">GAM</a> - MASE 0.8752 then with <a href="https://cran.r-project.org/web/packages/randomForest/index.html">R randomForest package</a> 0.8165 (10 September) - variables: some leading and lagging solar, 24/48/72 hr lagging temperature, hour, weekend, day of year, "lockdown" percentage estimate. Building 0 and 3 high and low data thresholded (b0: omit > 606.5 kW, b3 omit < 193 kW and > 2264 kW)
 * random forests with feature selection, top of the leaderboard going past Chun Fu presumably using lightGBM at 0.7205 (MASE 0.6881, 17 September)
 * tried out XGBoost - very slow, poor performance, and lots of hyperparameter tuning needed 
-* more feature selection and set Building 4 equal to 1 kW (MASE 0.6625, 17 September)
-* tuned the start months for the buildings (MASE 0.6528, 20 September). This remained better than any other forecast on the leaderboard for Phase 1. The closest forecasts were Nils Einecke (and Steffen Limmer) "Nasty II" 0.6589 on 30 September and Dong Minhui "Sub16" 0.6580 on 13 October.
+* performed more feature selection and set Building 4 equal to 1 kW (MASE 0.6625, 17 September)
+* tuned the start months in 2020 for all the buildings (MASE 0.6528, 20 September). This remained better than any other forecast on the leaderboard for Phase 1. The closest forecasts were Nils Einecke (and Steffen Limmer) "Nasty II" 0.6589 on 30 September and Dong Minhui "Sub16" 0.6580 on 13 October.
 * Used median forecasting with <a href="https://cran.r-project.org/web/packages/quantregForest/index.html">quantregForest</a> (MASE 0.6474, 27 September)
 * A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September)
 * Added in BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October) - so that is down from 0.6474 
