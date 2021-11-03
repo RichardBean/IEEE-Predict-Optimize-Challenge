@@ -120,6 +120,10 @@ This produces a whole series of possible solutions (up to about 50 per case) whi
 
 Ultimately, only Large 2 and Large 4 used recurring activities. I should have let the addition of once-off activities run a bit longer.
 
+I looked for ways to speed up the MIP solving to approximate a better solution in the complete MIQP. In Phase 1, I tried to bias the recurring activities away from Wednesday as the average pool price on that day was around $90 compared to around $44 for all days.
+
+This slowed down the solution process quite a bit; choosing to bias the activities so that the average load of the five days of the week occurred in descending order slowed it down too much. In Phase 2 the pool prices over the weekdays were similar so I didn't implement this idea.
+
 Quadratic programs are used in a series of papers by <a href="https://ieeexplore.ieee.org/document/6629420">Ratnam et al</a> on scheduling residential battery charging and discharging while avoiding backflow.
 
 ### Solve as a MIQP to add batteries and tune
@@ -132,7 +136,7 @@ Eventually, only Large 2 and 4 had once-off activities added in the peak (puttin
 
 I considered that allowing the once-off activities to be in ANY of the 2880 periods instead of the 680 "weekday working" periods would have made the problem harder for Gurobi.
 
-### Possisble approaches
+### Possible approaches
 
 I considered five approaches for building the submitted solution: conservative, forced discharge, no forced discharge, liberal and very liberal. 
 
