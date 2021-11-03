@@ -46,7 +46,7 @@ Ideas:
 * performed more feature selection and set Building 4 equal to 1 kW (MASE 0.6625, 17 September)
 * tuned the start months in 2020 for all the buildings (MASE 0.6528, 20 September). This remained better than any other forecast on the leaderboard for Phase 1. The closest forecasts were Nils Einecke (and Steffen Limmer) "Nasty II" 0.6589 on 30 September and Dong Minhui "Sub16" 0.6580 on 13 October.
 * Used median forecasting with <a href="https://cran.r-project.org/web/packages/quantregForest/index.html">quantregForest</a> (MASE 0.6474, 27 September)
-* A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September) - everything set at a quantile of 0.37 to try to experiment with improving the optimization result
+* A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September) - buildings set at a quantile of 0.37 to try to experiment with improving the optimization result
 * Building 0 set at 0.37, everything else set at 0.50 (MASE 0.6396, 9 October) - obviously that approach would not generalize to Phase 2!
 * Added in BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October) - so that was down from 0.6474 
 
