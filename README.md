@@ -10,7 +10,7 @@ Then the exact same approach is used with PHASE = 2 for Phase 2 to avoid bugs. E
 The final MASE for my phase 1 submission was 0.6320 and after getting access to the individual time series - 0.5166.
 
 |	Case      | MASE Phase 1   | MASE after tuning
-| ----------|----------------|-----------------|
+|:---------:|:--------------:|:---------------:|
 |	Building0	| 0.4301         |  0.3859         |
 |	Building1	| 0.6115         |  0.4251         |
 |	Building3	| 0.3310         |  0.2913         |
