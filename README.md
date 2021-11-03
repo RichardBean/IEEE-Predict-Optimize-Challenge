@@ -189,7 +189,7 @@ Errors
 
 Phase 1 of the competition had serious time zone issues.
 
-The writers/organizers did not seem to realize that their scheduling problem was in Melbourne time (UTC+10 or UTC+11) and the AEMO prices were in NEM time (UTC+10), while the ECMWF data was in UTC. 
+Until 4 October, the scheduling problem was in Melbourne time (UTC+10 or UTC+11) and the AEMO prices were in NEM time (UTC+10), while the ECMWF data was in UTC. 
 
 The result was that the activity scheduling was taking place in the middle of the night in Melbourne instead of 9am-5pm Melbourne time, typically 8pm-4am in Oct 2020 (UTC+11).
 
@@ -199,12 +199,12 @@ It was only on 1 Oct that I learned that the "Optim_eval" output was supposed to
 
 After that I started messaging the organizers about time zone problems and the missing value problems. Also there were spammers and the leaderboard crashed regularly, which was quite frustrating for me. 
 
-There were also bugs in the leaderboard evaluation causing some submissions to be evaluated as "worse" which was very discouraging and wasted a lot of my time.
-Several bugs were corrected on Oct 25, a week before submissions closed.
+There were also bugs in the leaderboard evaluation causing some submissions to be evaluated as "worse" which was discouraging and wasted a lot of time.
+Several other bugs were corrected on Oct 21.
 
 I only realized on 2 November that the recurring load did NOT cover Nov 30 or Dec 1 (Melbourne time) and the once-off load DID count Nov 30 and Dec 1 (Melbourne time, 9am-5pm) as peak periods, after inserting lots of System.out.println statements in the provided Java code. The Java code had changed at some point completely (ChronicsHandler.java and ChronicsScheduleChecker.java) to explicitly start on the first Monday and run for four complete weeks only, while many months such as Dec 2020 would have only three weeks complete.
 
-So even though this kind of solar and building challenge is very much my daily work, what seemed absolutely obvious and clear to the organizers was not obvious or clear to me. In Phase 1, there were many entries clustered in the $480,000 range and I wondered if they had just misunderstood the time zones.
+So even though this kind of solar and building challenge is very much my daily work, what seemed obvious and clear to the organizers was not to me. In Phase 1, there were many entries clustered in the $480,000 range and I wondered if they had just misunderstood the time zones.
 
 The competitors found critical bugs (e.g. time zone problems, solar traces being added to buildings in phase 1 instead of subtracted, etc).
 
