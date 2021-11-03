@@ -36,6 +36,9 @@ Ideas:
 * BOM solar data was complete for 2019-2020, although the other BOM variables had quite a few values missing. 
 * BOM also has paid data available for solar and other weather variables (hourly). 
 * The BOM data had to be scraped from the BOM website with some difficulty which was very kludgy - this probably discouraged some competitiors. I only joined on 9 Sep after seeing ECMWF data had been added; I use ECMWF data in my solar, electricity and bike-sharing demand forecasting.
+
+### Building Forecast
+
 * Buildings 4 and 5 are just set to the median values of October 2020 of 1 and 19 as they appear have no connection to time or weather at all. This is better in MASE terms than setting them to the average values.
 * I picked start dates for Buildings 0, 1, 3, 6 -- months 5, 1, 4, 0 i.e. June, February, May, January of 2020. These result in the lowest MASE in Phase 1. I tried exponential decay in the "ranger" training to weight the newest observations higher, but this made no difference whatever. So they are all weighted equally. There doesn't seem to be any point in training with the November 2020 data, unless it's like a jack-in-the-box and everything at Monash comes back to life in November which seemed unlikely.
 * Holidays -- I wanted to weight Friday before Grand Final Day (23 Oct 2020) with a different weekend value - it seemed to affect some buildings but not others. So I left it out of the training data (ie weekend variable was set to NA). Melbourne Cup day (3 Nov 2020) was just modelled as a normal day as it didn't seem to have any effect in the previous years. Nothing special was done for other holidays of 2020 e.g. Easter - there didn't seem to be much difference.
@@ -44,6 +47,9 @@ Ideas:
 * However, the b0 and b3 forecasts are slightly different based on the phase 1 experience - b0 ultimately doesn't use the "period 1" forecast of each hour. 
 * b0, 1, 3, 6 are normalized and a variable is attached to the training data based on <a href="doi.org/10.1016/j.ijforecast.2019.02.002">Smyl and Hua (2019).</a>
 * Next, b1 and b6 are forecast, without normalization. Building 1 has slightly fewer variables - there was some overfitting.
+
+### Solar Forecast 
+
 * Lastly, solar 0,1,2,3,4,5 are all forecast together. Using BOM data is critical here. Only a selection of relevant variables are used: BOM, temperature, SSRD, STRD, cloud cover (very useful for capturing shade), MSLP, Fourier values for hour and day. All variables +/- 3 hours except for MSLP which was +/- 1 hour.
 * Cleaning: s0 and s5 have very problematic low values. Only "rows" (i.e. sets of four values) with a value over 0.05 kW were considered in training - i.e. filtered. 
 * This improved the MASE for Solar5 by about 0.2.
@@ -61,6 +67,8 @@ Optimization
 
 Solving the model as a MIP is much easier than solving the MIQP. Almost all of the submitted solution depends on starting from the best MIP solution found (i.e. minimizing the recurring load or minimizing the recurring + once-off load). Then we just have to cross our fingers that our forecast is good enough so that the estimated cost is very close to the actual cost.
 
+### Choosing Gurobi
+
 I based my initial approach on the 0-1 MIP explained by Taheri at <a href="https://youtu.be/uPi5DyPYYzg">Advanced Methods for Scheduling using Gurobi</a> and <a href="https://youtu.be/0EUX3ua2liU">Tips and Tricks for Optimal Scheduling with End-to-End Analytics and Gurobi</a> 
 
 <a href="https://www.gurobi.com/resource/job-scheduling-tips-and-tricks/">Sample code</a> was provided on the Gurobi website for scheduling in Python (I fixed some bugs) and the video was excellent and focussed on practicalities i.e. things you wouldn't read in the Gurobi manual. 
@@ -77,6 +85,8 @@ Taheri suggested two approaches - one based on arrays and one based on 0-1 MIPs.
 
 I used Gurobi 9.1.2 on my laptop for Phase 1 and UQ HPC for Phase 2.
 
+### First solve as a MIP to flatten recurring and once-off load
+
 First, "phase2flat" minimizes the recurring load over 532 periods, with no batteries and no once-off activities.
 
 Then, "phase2flat_oct24" minimizes the recurring and once-off load over 2880 periods, with no batteries; used to build up over the best "flat" solution found given an initial solution.
@@ -87,6 +97,8 @@ Ultimately, only Large 2 and Large 4 used recurring activities. I should have le
 
 Quadratic programs are used in a series of papers by <a href="https://ieeexplore.ieee.org/document/6629420">Ratnam et al</a> on scheduling residential battery charging and discharging while avoiding backflow.
 
+### Solve as a MIQP to add batteries and tune
+
 Then, "phase2update" adds the quadratic objective function and batteries, optimizing over 2880 periods; the only extra constraint is that battery charging cannot occur in "peak" which means weeks 1-4 i.e. 2-6, 9-13, 16-20, 23-27 November during 9am-5pm. Periods on 30 Nov and 1 Dec 9am-5pm (Mel time) are not considered "peak" for the recurring activities or battery charging, although once-off activities can be scheduled in these 10 hours and still get the "bonus".
 
 Simultaneously, "flat_once_improve" starts with the recurring and once-off load, adds the quadratic objective function, and optimizes over 2880 periods. This is effectively just adding the battery in as no better solutions were found in the run time.
@@ -94,6 +106,8 @@ Simultaneously, "flat_once_improve" starts with the recurring and once-off load,
 Eventually, only Large 2 and 4 had once-off activities added in the peak (putting them in the off-peak looked too costly for phase 2; although I did let the "onceIn" binary variable float freely i.e. the solver could choose if it wanted once-off activities in or out, so it wasn't all once-off activities either in or out). 
 
 I considered that allowing the once-off activities to be in ANY of the 2880 periods instead of the 680 "weekday working" periods would have made the problem harder for Gurobi.
+
+### Possisble approaches
 
 I considered five approaches for building the submitted solution: conservative, forced discharge, no forced discharge, liberal and very liberal. 
 
