@@ -49,12 +49,12 @@ Ideas:
 
 ### Summary of phase 1 forecasting MASE tuning against time series
 * add cloud cover +/- 3 hours (MASE 0.6243)
-* solar data from beginning of 2020 instead of from day 142 (MASE 0.6063)
-* tuning the months for the buildings (selected from 2020) and adding all possible weather variables (MASE 0.5685)
-* fix up Solar5 data by filtering (MASE 0.5387)
-* train all solar and building data together (MASE 0.5220)
-* fix up Solar0 data by same filtering as for Solar5 (MASE 0.5207)
-* add in separate weekday variables (MASE 0.5166)
+* solar data from beginning of 2020 instead of from day 142, 17 October (MASE 0.6063)
+* tuning the months for the buildings (selected from 2020) and adding all possible weather variables, 18 October (MASE 0.5685)
+* fix up Solar5 data by filtering, 24 October (MASE 0.5387)
+* train all solar and building data together, 30 October (MASE 0.5220)
+* fix up Solar0 data by same filtering as for Solar5, 31 October (MASE 0.5207)
+* add in separate weekday variables, 2 November (MASE 0.5166)
 
 ### Building Forecast
 
