@@ -156,7 +156,7 @@ The other idea was to add a constraint stating that any relaxation (i.e. increas
 Errors
 ======
 
-Time zone problems were a big problem in phase 1. 
+Phase 1 of the competition had serious time zone issues.
 
 The writers/organizers did not seem to realize that their scheduling problem was in Melbourne time (UTC+10 or UTC+11), the AEMO prices were in NEM time (UTC+10) while the ECMWF data was in UTC. 
 
