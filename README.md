@@ -42,17 +42,17 @@ Ideas:
 * random forests with feature selection, top of the leaderboard going past Chun Fu presumably using lightGBM at 0.7205 (MASE 0.6881, 17 September)
 * tried out XGBoost - very slow, poor performance, and lots of hyperparameter tuning needed 
 * more feature selection and set Building 4 equal to 1 kW (MASE 0.6625, 17 September)
-* tuned the start months for the buildings (MASE 0.6528, 20 September)
+* tuned the start months for the buildings (MASE 0.6528, 20 September). This remained better than any other forecast on the leaderboard for Phase 1. The closest forecasts were Nils Einecke (and Steffen Limmer) "Nasty II" 0.6589 on 30 September and Dong Minhui "Sub16" 0.6580 on 13 October.
 * Used median forecasting with <a href="https://cran.r-project.org/web/packages/quantregForest/index.html">quantregForest</a> (MASE 0.6474, 27 September)
 * A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September)
-* Added in BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October)
+* Added in BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October) - so that is down from 0.6474 
 
 ### Summary of phase 1 forecasting MASE tuning against individual time series
 * 13 October - phase 1 (October 2020) individual time series became available
 * The "mase_calculator.R" provided uses the MASE function from the <a href="https://cran.r-project.org/web/packages/greybox/index.html">greybox R package.</a> It's equivalent to MAE divided by a scaling factor, so I calculated the scaling factors for each of the 12 time series.
 * added cloud cover +/- 3 hours (MASE 0.6243, 16 October)
 * solar data from beginning of 2020 instead of from day 142 (MASE 0.6063, 17 October)
-* selected start month (0-8) for each building series (from 2020), added all possible weather variables, set Building 5 equal to 19 kW (MASE 0.5685, 18 October)
+* selected start month (0-8) for each of 4 building series (from 2020), added all possible weather variables, set Building 5 equal to 19 kW (MASE 0.5685, 18 October)
 * fixed up Solar5 data by filtering (MASE 0.5387, 24 October)
 * noticed that forecasting Solar0 and Solar5 as linear combinations of the other Solar variables was working better than my actual Solar0/5 prediction
 * noticed that some pairs of solar series were much more highly correlated than other pairs, and buildings 3/6 were also highly correlated
@@ -60,7 +60,7 @@ Ideas:
 * fixed up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
 * added in separate weekday variables (MASE 0.5166, 2 November)
 * for reference: ranger with mean rather median forecast: MASE 0.5387 (3 November)
-* for reference: with Building0 outliers fixed - MASE 0.5121 (3 November) -- hopeful of similar result on phase 2
+* for reference: with Building0 outliers fixed (i.e. four 1744.1 kW building 0 values replaced by 100 kW) MASE 0.5121 (3 November) -- hopeful of similar result on phase 2
 
 ### Building Forecast
 
