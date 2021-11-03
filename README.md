@@ -5,9 +5,9 @@ Forecast
 ========
 
 phase2-days.R is run with PHASE = 1 to check what the MASE is for phase 1. For the competition data, this was 0.5166. 
-Then the exact same approach is used with PHASE = 2 for Phase 2 to avoid bugs. It takes about half an hour on my laptop.
+Then the exact same approach is used with PHASE = 2 for Phase 2 to avoid bugs. Each phase takes about half an hour on my laptop.
 
-Final MASE for my phase 1 submission (0.6320) and after tuning for Phase 1 (0.5166).
+The final MASE for my phase 1 submission was 0.6320 and after getting access to the individual time series - 0.5166.
 
 |	Case      | MASE Phase 1   | MASE after tuning
 | ----------|----------------|-----------------|
@@ -23,7 +23,7 @@ Final MASE for my phase 1 submission (0.6320) and after tuning for Phase 1 (0.51
 |	Solar3	   | 0.5910244      |  0.4989962      |
 |	Solar4	   | 0.562383       |  0.421899       |
 |	Solar5	   | 0.8559337      |  0.609157       |
-|	Mean	     | **0.6320**     |  **0.5166**     |
+|	**Mean**  | **0.6320**     |  **0.5166**     |
 
 Ideas:
 * Initially I used GAMs (generalized additive models) of <a href="https://www.jstor.org/stable/24771867">Wood, Goude and Shaw</a> which is great for visualizations and explainability, especially for bike-sharing demand forecasting (see <a href="https://doi.org/10.1016/j.jtrangeo.2021.103155">Bean, Pojani and Corcoran 2021</a>) but switched to random forests as the competition was only about performance. 
