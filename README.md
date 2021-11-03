@@ -41,7 +41,7 @@ Ideas:
 * <a href="https://cran.r-project.org/web/packages/mgcv/index.html">GAM</a> - MASE 0.8752 then 0.8165 (10 September)
 * random forests with feature selection, top of the leaderboard going past Chun Fu presumably using lightGBM at 0.7205 (MASE 0.6881, 17 September)
 * tried out XGBoost - very slow, poor performance, and lots of hyperparameter tuning needed 
-* more feature selection and set Building 4 equal to 1 kW (MASE 0.6626, 17 September)
+* more feature selection and set Building 4 equal to 1 kW (MASE 0.6625, 17 September)
 * tuned the start months for the buildings (MASE 0.6528, 20 September)
 * Used median forecasting with <a href="https://cran.r-project.org/web/packages/quantregForest/index.html">quantregForest</a> (MASE 0.6474, 27 September)
 * A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September)
