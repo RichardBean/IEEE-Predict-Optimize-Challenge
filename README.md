@@ -9,7 +9,7 @@ Then the exact same approach is used with PHASE = 2 for Phase 2 to avoid bugs. (
 a frustrating number of unreproducible results).
 Each phase takes about half an hour on my laptop.
 
-The final MASE for my phase 1 submission was 0.6320 and after getting access to the individual time series - 0.5166.
+The final MASE for my phase 1 submission was 0.6320 and after getting access to the individual time series I lowered this to 0.5166.
 
 |	Case      | MASE Phase 1   | MASE after tuning
 |:---------:|:--------------:|:---------------:|
