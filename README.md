@@ -139,7 +139,7 @@ I considered five approaches for building the submitted solution: conservative, 
 1. **Conservative** is just choosing the lowest recurring load and lowest recurring + once off load and evaluating cost using a naive or flat forecast. 
 This was probably the winning approach for cost in Phase 1, as some competitiors had winning results with no forecast, or a poor forecast, but seemed pointless to me as the organizers said quality of forecast should contribute to results in phase 2.
 
-2. **Forced discharge** forbids any charging in peak hours, and forces at least one of the two batteries to be discharging in every peak period. This was thought to avoid nasty surprises in the peak load as in phase 1 one of the actual observed values (period 2702 of 2880) was ~260 kW above my final forecast (i.e. forecast with 0.5166 MASE). However, although values drop randomly in and out of the building data, I hoped that there were no "outliers" in phase 2 as promised (although this "outlier" comment from the competition organizers probably referred to the repeated 1744.1 kW values in the Building 0 trace - periods 1710 to 1713 of 2880).
+2. **Forced discharge** forbids any charging in peak hours, and forces at least one of the two batteries to be discharging in every peak period. This was thought to avoid nasty surprises in the peak load as in phase 1 one of the actual observed values (period 2702 of 2976) was ~260 kW above my final forecast (i.e. forecast with 0.5166 MASE). However, although values drop randomly in and out of the building data, I hoped that there were no "outliers" in phase 2 as promised (although this "outlier" comment from the competition organizers probably referred to the repeated 1744.1 kW values in the Building 0 trace - periods 1710 to 1713 of 2976).
 
 3. **No forced discharge** forbids any charging in peak hours, but the MIQP solver decides whether to discharge or do nothing in those hours.
 
@@ -206,4 +206,4 @@ The best solution for recurring plus once-off would probably have been found if 
 Thanks
 ======
 
-Thanks to Archie Chapman for mentioning the competition on our work Slack channel and David Green of UQ HPC for updated Gurobi to 9.1.2 and spending hours helping me experiment and tinker to see how Gurobi operated in multi-threaded mode.
+Thanks to the competition organizers, to Archie Chapman for mentioning the competition on our work Slack channel and David Green of UQ HPC for updated Gurobi to 9.1.2 and spending hours helping me experiment and tinker to see how Gurobi operated in multi-threaded mode.
