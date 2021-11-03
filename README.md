@@ -104,7 +104,7 @@ Solving the model as a MIP is much easier than solving the MIQP. Almost all of t
 
 ### Choosing Gurobi
 
-I based my initial approach on the 0-1 MIP explained by Taheri at <a href="https://youtu.be/uPi5DyPYYzg">Advanced Methods for Scheduling using Gurobi</a> and <a href="https://youtu.be/0EUX3ua2liU">Tips and Tricks for Optimal Scheduling with End-to-End Analytics and Gurobi</a> 
+I based my initial approach on the 0-1 MIP explained by Taheri at <a href="https://youtu.be/uPi5DyPYYzg">Advanced Methods for Scheduling using Gurobi</a> and <a href="https://youtu.be/0EUX3ua2liU">Tips and Tricks for Optimal Scheduling with End-to-End Analytics and Gurobi.</a> 
 
 <a href="https://www.gurobi.com/resource/job-scheduling-tips-and-tricks/">Sample code</a> was provided on the Gurobi website for scheduling in Python (I fixed some bugs) and the video was excellent and focussed on practicalities i.e. things you wouldn't read in the Gurobi manual. 
 
@@ -116,7 +116,7 @@ Using Gurobi alone also saved me from having to implement in another modelling l
 
 Also, ANY "warm start" initial solution (as provided in the competition for the recurring activities) is better than none, while a good "warm start" is better than a bad "warm start".
 
-Taheri suggested two approaches - one based on arrays and one based on 0-1 MIPs. I chose the 0-1 MIPs approach as there was sample code for pulling out the start hour of each activity straight away, and the arrays approach seemed to require choosing a somewhat arbitary slack variable.
+Taheri suggested two approaches - an "array" formulation and a "tuple" formulation. I chose the "array" formulation as there was sample code for pulling out the start hour of each activity straight away, and the "tuples" approach required choosing a seemingly arbitary large number "M". She suggested M could be around 1e6, but setting it too large could make the problem ill-conditioned. I also didn't have time to try both approaches - the "tuple" formulation may be much better for this problem.
 
 I used Gurobi 9.1.2 on my laptop for Phase 1 and UQ HPC for Phase 2.
 
