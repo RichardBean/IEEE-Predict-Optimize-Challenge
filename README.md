@@ -173,7 +173,7 @@ Several bugs were corrected on Oct 25, a week before submissions closed.
 
 I only realized on 2 November that the recurring load did NOT cover Nov 30 or Dec 1 (Melbourne time) and the once-off load DID count Nov 30 and Dec 1 (Melbourne time, 9am-5pm) as peak periods, after inserting lots of System.out.println statements in the provided Java code. The Java code had changed at some point completely (ChronicsHandler.java and ChronicsScheduleChecker.java) to explicitly start on the first Monday and run for four complete weeks only, while many months such as Dec 2020 would have only three weeks complete.
 
-So even though this kind of solar and building challenge is very much my daily work, what seemed absolutely obvious and clear to the organizers was absolutely not obvious or clear to at least some of the competitors.
+So even though this kind of solar and building challenge is very much my daily work, what seemed absolutely obvious and clear to the organizers was not obvious or clear to me. In Phase 1, there were many entries in the $480,000 range and I wondered if they had just misunderstood the time zones.
 
 The competitors found critical bugs (e.g. time zone problems, solar traces being added to buildings in phase 1 instead of subtracted, etc).
 
