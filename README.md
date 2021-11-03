@@ -187,9 +187,7 @@ Estimated total cost (3 November) -- $261,906
 Errors
 ======
 
-Phase 1 of the competition had serious time zone issues.
-
-Until 4 October, the scheduling problem was in Melbourne time (UTC+10 or UTC+11) and the AEMO prices were in NEM time (UTC+10), while the ECMWF data was in UTC. 
+Phase 1 of the competition had time zone issues. Until 4 October, the scheduling problem was in Melbourne time (UTC+10 or UTC+11) and the AEMO prices were in NEM time (UTC+10), while the ECMWF data was in UTC. 
 
 The result was that the activity scheduling was taking place in the middle of the night in Melbourne instead of 9am-5pm Melbourne time, typically 8pm-4am in Oct 2020 (UTC+11).
 
@@ -197,7 +195,7 @@ This made no sense to me. I was trying different things to improve the cost and 
 
 It was only on 1 Oct that I learned that the "Optim_eval" output was supposed to correspond exactly with the leaderboard result.  Prior to this I thought this software was only a guide for competitors to evaluate their results and test validity.
 
-After that I started messaging the organizers about time zone problems and the missing value problems. Also there were spammers and the leaderboard crashed regularly, which was quite frustrating for me. 
+After that I started messaging the organizers about time zone problems and the missing value problems. Also there were spammers and the leaderboard crashed regularly, which was quite frustrating for me and probably everyone else.
 
 There were also bugs in the leaderboard evaluation causing some submissions to be evaluated as "worse" which was discouraging and wasted a lot of time.
 Several other bugs were corrected on Oct 21.
