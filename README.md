@@ -47,7 +47,7 @@ Ideas:
 * A lot of playing with various quantiles which was completely invalid but fun, while learning how to use Gurobi (MASE 0.6404, 27 September)
 * Adding in the BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October)
 
-### Summary of phase 1 forecasting MASE tuning against time series
+### Summary of phase 1 forecasting MASE tuning against individual time series with "greybox" R MASE function
 * add cloud cover +/- 3 hours (MASE 0.6243)
 * solar data from beginning of 2020 instead of from day 142, 17 October (MASE 0.6063)
 * tuning the months for the buildings (selected from 2020) and adding all possible weather variables, 18 October (MASE 0.5685)
