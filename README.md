@@ -34,7 +34,7 @@ Ideas:
 * The final choices were: building 0/1/3/6 mtry = 43, building 1 mtry = 2, building 6 mtry = 19, solar mtry = 13
 * I used BOM and ECMWF data together: see the bos.csv file provided, which has daily data from three solar sites in Melbourne. 
 * BOM solar data was complete for 2019-2020, although the other BOM variables had quite a few values missing. 
-* BOM also has paid data available for solar and other weather variables (hourly). 
+* BOM also has paid data available for solar and other weather variables (hourly). Of course we were not allowed to use this in the competition.
 * The BOM data had to be scraped from the BOM website with some difficulty which was very kludgy - this probably discouraged some competitiors. I only joined on 9 Sep after seeing ECMWF data had been added; I use ECMWF data in my solar, electricity and bike-sharing demand forecasting.
 
 ### Summary of phase 1 forecasting MASE with leaderboard
