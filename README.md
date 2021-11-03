@@ -48,6 +48,7 @@ Ideas:
 * Added in BOM solar data, no cheating with quantiles (MASE 0.6320, 10 October)
 
 ### Summary of phase 1 forecasting MASE tuning against individual time series
+* 13 October - phase 1 (October 2020) individual time series became available
 * The "mase_calculator.R" provided uses the MASE function from the <a href="https://cran.r-project.org/web/packages/greybox/index.html">greybox R package.</a> It's equivalent to MAE divided by a scaling factor, so I calculated the scaling factors for each of the 12 time series.
 * added cloud cover +/- 3 hours (MASE 0.6243, 16 October)
 * solar data from beginning of 2020 instead of from day 142 (MASE 0.6063, 17 October)
