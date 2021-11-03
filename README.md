@@ -1,5 +1,5 @@
 # ieee-predict-optimize
-This is my code, data and approach for <a href="https://ieee-dataport.org/competitions/ieee-cis-technical-challenge-predictoptimize-renewable-energy-scheduling">IEEE-CIS Technical Challenge on Predict+Optimize for Renewable Energy Scheduling.</a> The competition ran from 1 July to 3 November 2021, although I only became involved on 9 September.
+This is my code, data and approach for <a href="https://ieee-dataport.org/competitions/ieee-cis-technical-challenge-predictoptimize-renewable-energy-scheduling">IEEE-CIS Technical Challenge on Predict+Optimize for Renewable Energy Scheduling.</a> The competition ran from 1 July to 3 November 2021, although I only became involved on 10 September.
 
 Forecast
 ========
@@ -40,7 +40,7 @@ Ideas:
 ### Summary of phase 1 forecasting MASE with leaderboard
 * <a href="https://cran.r-project.org/web/packages/mgcv/index.html">GAM</a> - MASE 0.8752 then 0.8165 (10 September)
 * random forests with feature selection, top of the leaderboard going past Chun Fu presumably using lightGBM at 0.7205 (MASE 0.6881, 17 September)
-* tried out XGBoost - slow and useless, and lots of hyperparameter training needed 
+* tried out XGBoost - very slow, poor performance, and lots of hyperparameter tuning needed 
 * more feature selection and set Building 4 equal to 1 kW (MASE 0.6626, 17 September)
 * tuned the start months for the buildings (MASE 0.6528, 20 September)
 * Used median forecasting with <a href="https://cran.r-project.org/web/packages/quantregForest/index.html">quantregForest</a> (MASE 0.6474, 27 September)
@@ -54,7 +54,7 @@ Ideas:
 * fixed up Solar5 data by filtering (MASE 0.5387, 24 October)
 * noticed that forecasting Solar0 and Solar5 as linear combinations of the other Solar variables was working better than my actual Solar0/5 prediction
 * noticed that some pairs of solar series were much more highly correlated than other pairs, and buildings 3/6 were also highly correlated
-* trained all solar and building data together after seeing Smyl and Hua paper and competition text about training series together (MASE 0.5220, 30 October)
+* trained all solar and building data together after seeing <a href="<a href="doi.org/10.1016/j.ijforecast.2019.02.002">">Smyl and Hua paper</a> and competition text about training series together (MASE 0.5220, 30 October)
 * fixed up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
 * added in separate weekday variables (MASE 0.5166, 2 November)
 
@@ -65,7 +65,7 @@ Ideas:
 * Holidays -- I wanted to weight Friday before Grand Final Day (23 Oct 2020) with a different weekend value - it seemed to affect some buildings but not others. So I left it out of the training data (ie weekend variable was set to NA). Melbourne Cup day (3 Nov 2020) was just modelled as a normal day as it didn't seem to have any effect in the previous years. Nothing special was done for other holidays of 2020 e.g. Easter - there didn't seem to be much difference.
 * I trained Buildings 0, 1, 3, and 6 together, used a kitchen sink variables approach, all variables plus 3 hours leading and lagging (except MSLP 1 hour leading and lagging), plus temperatures 24, 48 and 72 hours ago (<a href="https://eprints.qut.edu.au/95170/">Clements and Li 2016</a>), plus Fourier value of hour / day of year, plus day of week variable for each of seven days, plus weekend variable, plus Mon/Fri var, plus Tue/Wed/Thu var
 * However, this only predicts buildings 0 and 3 ultimately. The first period forecast for these buildings is taken from the last period of the training data, so we are sure to have that right. After that, the values are just repeated in blocks of four. 
-* However, the b0 and b3 forecasts are slightly different based on the phase 1 experience - b0 ultimately doesn't use the "period 1" forecast of each hour. 
+* The b0 and b3 forecasts are slightly different based on the phase 1 experience - b0 ultimately doesn't use the "period 1" forecast of each hour. 
 * b0, 1, 3, 6 are normalized and a variable is attached to the training data based on <a href="doi.org/10.1016/j.ijforecast.2019.02.002">Smyl and Hua (2019).</a>
 * Next, b1 and b6 are forecast, without normalization. Building 1 has slightly fewer variables - there was some overfitting.
 
@@ -74,7 +74,7 @@ Ideas:
 * Lastly, solar 0,1,2,3,4,5 are all forecast together. Using BOM data is critical here. Only a selection of relevant variables are used: BOM, temperature, SSRD, STRD, cloud cover (very useful for capturing shade), MSLP, Fourier values for hour and day. All variables +/- 3 hours except for MSLP which was +/- 1 hour.
 * Cleaning: s0 and s5 have very problematic low values. Only "rows" (i.e. sets of four values) with a value over 0.05 kW were considered in training - i.e. filtered. 
 * This improved the MASE for Solar5 by about 0.2.
-* Other solar traces have cumulative values in them for 2020 which would have been a disaster for training. Ultimately, s1, s2 and s3 were truncated at day 142 of 2020, while all of s4 was used, and all of s0 and s5 (with the filter applied). 
+* Other solar traces have cumulative values in them for 2019 which would have been a disaster for training. Ultimately, s1, s2 and s3 were truncated at day 142 of 2020, while all of s4 was used, and all of s0 and s5 (with the filter applied). 
 * Solar forecast was also normalized using the maximum observed values in the selected training data. 
 * Solar0 has a value of 52 kW in Oct 2020 which is higher than any previously observed value. 
 * I was unsure whether to leave that in or not, but I assumed it was a genuine reading i.e. even in October, performance had somehow improved perhaps due to solar panel cleaning or shade being removed, or the angle changing. 
@@ -143,9 +143,11 @@ This was probably the winning approach for cost in Phase 1, as some competitiors
 
 5. **Very liberal** allows charging over peak and does not attempt to control the maximum of recurring + once off + charge effect. This would be the best approach if the forecast was perfect.
 
-Other approaches could be weighting building at 60% quantile, and solar at 40% quantile as in <a href="https://arxiv.org/abs/1810.11178">Bean and Khan (2018).</a> Bean and Khan also avoided any charging in peak, and operated off a net load forecast as in this challenge.
+Other approaches could be weighting buildings at 60% quantile, and solar at 40% quantile as in <a href="https://arxiv.org/abs/1810.11178">Bean and Khan (2018).</a> Bean and Khan also avoided any charging in peak, and operated off a net load forecast as in this challenge.
 
-There is not really any way to know how "good" my phase 2 forecast was; so I just tested the last four approaches here with my final phase 1 data. Although the objective function values for "liberal" and "very liberal" were lowest, over all the 10 problems the "no forced discharge" approach had a slightly lower cost. Of course, the pool prices for Nov 2020 were quite different from the prices for Oct 2020, but I thought this "ad hoc" or "heuristic" approach was probably the best idea. 
+There is not really any way to know how "good" my phase 2 forecast was; so I just tested the last four approaches here with my final phase 1 data. 
+
+The objective function values for "liberal" and "very liberal" were lowest of the approaches. But over all the 10 problems, the "no forced discharge" approach had a slightly lower cost as evaluated against the actual net load. Of course, the pool prices for Nov 2020 were quite different from the prices for Oct 2020, but I thought this "ad hoc" or "heuristic" approach was probably the best idea. 
 
 The other idea was to add a constraint stating that any relaxation (i.e. increase) in the maximum observed load over the month had to be at least counterbalanced by a decrease in the cost of electricity. But this seemed unnecessarily constraining. I decided to trust the forecast, which may be a risky approach, but also had the best shot at developing the best schedule.
 
@@ -173,7 +175,7 @@ So even though this kind of solar and building challenge is very much my daily w
 
 The competitors found critical bugs (e.g. time zone problems, solar traces being added to buildings in phase 1 instead of subtracted, etc).
 
-I think I had some luck in joining at the correct time i.e. around 9 Sep when ECMWF data was added.
+I think I had some luck in joining at the correct time around 10 Sep after the ECMWF data was added. I had downloaded the files, ECMWF/ERA5 and BOM data on 10 August, and ten did nothing more until 10 Sep. I may not have bothered entering without the ECMWF data.
 
 If I had to do it again, I'd let the "phase2flat_oct24" optimization run for much longer. 
 
