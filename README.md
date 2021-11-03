@@ -120,15 +120,27 @@ The other idea was to add a constraint stating that any relaxation (i.e. increas
 Errors
 ======
 
-Time zone problems were a big problem in phase 1. The writers/organizers did not seem to realize that their scheduling problem was in Melbourne time (UTC+10 or UTC+11), the AEMO prices were in NEM time (UTC+10) while the ECMWF data was in UTC. The result was that the scheduling was actually taking place in the middle of the night in Melbourne (8pm-4am typically in Oct 2020). This made no sense to me. I was trying different things to improve the cost and nothing was working. The highest load was in the very first period (8pm) but all sorts of approaches weighting for this was not bringing the cost down at all.
+Time zone problems were a big problem in phase 1. 
+
+The writers/organizers did not seem to realize that their scheduling problem was in Melbourne time (UTC+10 or UTC+11), the AEMO prices were in NEM time (UTC+10) while the ECMWF data was in UTC. 
+
+The result was that the scheduling was actually taking place in the middle of the night in Melbourne (8pm-4am typically in Oct 2020). 
+
+This made no sense to me. I was trying different things to improve the cost and nothing was working. The highest load was in the very first period (8pm) but all sorts of approaches weighting for this was not bringing the cost down at all.
 
 It was only on 1 Oct that I learned that the "Optim_eval" output was supposed to correspond exactly with the leaderboard result.  Prior to this I thought this software was only a guide for competitors to evaluate their results and test validity.
+
 After that I started messaging the organizers about time zone problems and the missing value problems. Also there were spammers and the leaderboard crashed regularly, which was quite frustrating for me. 
+
 There were also bugs in the leaderboard evaluation causing some submissions to be evaluated as "worse" which was very discouraging and wasted a lot of my time.
 Several bugs were corrected on Oct 25, a week before submissions closed.
+
 I only realized at the last moment that the recurring load did NOT cover Nov 30 or Dec 1 (Melbourne time) and the once-off load DID count Nov 30 and Dec 1 (Melbourne time, 9am-5pm) as peak periods, after inserting lots of System.out.println statements in the provided Java code.
+
 So even though this kind of solar and building challenge is very much my daily work, what seemed absolutely obvious and clear to the organizers was absolutely not obvious or clear to at least some of the competitors.
+
 The competitors found critical bugs (e.g. time zone problems, solar traces being added to buildings in phase 1 instead of subtracted, etc).
+
 I think I had some luck in joining at the correct time i.e. around 9 Sep when ECMWF data was added.
 
 If I had to do it again, I'd let the "phase2flat_oct24" optimization run for much longer. 
