@@ -90,6 +90,10 @@ Ideas:
 * Using a grid of ECMWF data instead of the point provided would have allowed competitors to demonstrate other skill sets i.e. inverse distance weighting the output, different weighting depending on time of day, and different weighting depending on wind speed and cloud cover in surrounding grid points. In the solar model here wind speed was not used at all.
 * The GFS, MERRA-2 and JRA-55 data are also free. This is the <a href="https://solcast.com/solar-irradiance-forecasting-weather-models/">Solcast approach</a> i.e. an ensemble of NWP forecasts, plus Himawari-8 satellite data to provide a real-time "nowcast". ECMWF data is only updated every 6 hours while the satellite data is updated several times an hour. <a href="https://openclimatefix.org/">Open Climate Fix</a> uses similar input data.
  
+### Post-mortem perfectionism
+* Every series with a MASE above 0.5 (Phase 1) makes me uncomfortable. However, I couldn't find any relationship between Building4/5 and time/day/weather
+* I also couldn't see a good way to improve Solar 0/5 yet. I wonder why the MASE is so high for those.
+ 
 Optimization
 ============
 
