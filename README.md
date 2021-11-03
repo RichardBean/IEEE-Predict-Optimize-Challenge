@@ -58,7 +58,7 @@ Ideas:
 * trained all solar and building data together after seeing the <a href="https://doi.org/10.1016/j.ijforecast.2019.02.002">Smyl and Hua paper</a> and competition text about training series together (MASE 0.5220, 30 October)
 * fixed up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
 * added in separate weekday variables (MASE 0.5166, 2 November)
-* for reference: ranger with mean rather median forecast: MASE 0.5xxx (3 November)
+* for reference: ranger with mean rather median forecast: MASE 0.5387 (3 November)
 
 ### Building Forecast
 
