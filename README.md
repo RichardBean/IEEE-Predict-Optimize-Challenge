@@ -77,6 +77,7 @@ Ideas:
 * The b0 and b3 forecasts are slightly different based on the phase 1 experience - b0 ultimately doesn't use the "period 1" forecast of each hour. 
 * b0, 1, 3, 6 are normalized and a variable is attached to the training data based on <a href="doi.org/10.1016/j.ijforecast.2019.02.002">Smyl and Hua (2019).</a>
 * Next, b1 and b6 are forecast, without normalization. Building 1 has slightly fewer variables - there was some overfitting.
+* There was a shift down in one of the building values observed - starting to revert to mean by end of October.
 
 ### Solar Forecast 
 
