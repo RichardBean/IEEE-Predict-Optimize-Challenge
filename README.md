@@ -54,7 +54,7 @@ Ideas:
 * fixed up Solar5 data by filtering (MASE 0.5387, 24 October)
 * noticed that forecasting Solar0 and Solar5 as linear combinations of the other Solar variables was working better than my actual Solar0/5 prediction
 * noticed that some pairs of solar series were much more highly correlated than other pairs, and buildings 3/6 were also highly correlated
-* trained all solar and building data together after seeing <a href="<a href="doi.org/10.1016/j.ijforecast.2019.02.002">">Smyl and Hua paper</a> and competition text about training series together (MASE 0.5220, 30 October)
+* trained all solar and building data together after seeing the <a href="doi.org/10.1016/j.ijforecast.2019.02.002">Smyl and Hua paper</a> and competition text about training series together (MASE 0.5220, 30 October)
 * fixed up Solar0 data by same filtering as for Solar5 (MASE 0.5207, 31 October)
 * added in separate weekday variables (MASE 0.5166, 2 November)
 
