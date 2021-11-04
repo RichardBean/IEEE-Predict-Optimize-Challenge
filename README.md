@@ -148,6 +148,8 @@ I considered that allowing the once-off activities to be in ANY of the 2880 peri
 
 ### Possible approaches
 
+*"uncertainty in the inputs needs to be addressed"* -- from competition abstract
+
 I considered five approaches for building the submitted solution: conservative, forced discharge, no forced discharge, liberal and very liberal. 
 
 1. **Conservative** is just choosing the lowest recurring load and lowest recurring + once off load and evaluating cost using a naive or flat forecast. 
