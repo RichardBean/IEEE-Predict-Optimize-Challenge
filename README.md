@@ -117,7 +117,7 @@ Using Gurobi alone also saved me from having to implement in another modelling l
 
 Also, ANY "warm start" initial solution (as provided in the competition for the recurring activities) is better than none, while a good "warm start" is better than a bad "warm start".
 
-Taheri suggested two approaches - an "array" formulation and a "tuple" formulation. I chose the "array" formulation as there was sample code for pulling out the start hour of each activity straight away, and the "tuples" approach required choosing a seemingly arbitary large number "M". She suggested M could be around 1e6, but setting it too large could make the problem ill-conditioned. I also didn't have time to try both approaches - the "tuple" formulation may be much better for this problem.
+Taheri suggested two approaches - an "array" formulation and a "tuple" formulation. I chose the "array" formulation as there was sample code for pulling out the start period of each activity straight away, and the "tuples" approach required choosing a seemingly arbitary large number "M". She suggested M could be around 1e6, but setting it too large could make the problem ill-conditioned. I also didn't have time to try both approaches - the "tuple" formulation may be much better for this problem.
 
 I used Gurobi 9.1.2 on my laptop for Phase 1 and UQ HPC for Phase 2.
 
