@@ -171,7 +171,7 @@ Other approaches could be weighting buildings at 60% quantile, and solar at 40% 
 
 There is not really any way to know how "good" my phase 2 forecast was; so I just tested the last four approaches here with my final phase 1 data. 
 
-The objective function values for "liberal" and "very liberal" were lowest of the approaches. But over all the 10 problems, the "no forced discharge" approach had a slightly lower cost as evaluated against the actual net load. Of course, the pool prices for Nov 2020 were quite different from the prices for Oct 2020, but I thought this "ad hoc" or "heuristic" approach was probably the best idea. 
+The objective function values for "liberal" and "very liberal" were lowest of the approaches. But over all the 10 problems, the "no forced discharge" approach had a slightly lower cost in Phase 1 as evaluated against the actual net load. Of course, the pool prices for Nov 2020 were quite different from the prices for Oct 2020, but I thought this "ad hoc" or "heuristic" approach was probably the best idea. 
 
 The other idea was to add a constraint stating that any relaxation (i.e. increase) in the maximum observed load over the month had to be at least counterbalanced by a decrease in the cost of electricity. But this seemed unnecessarily constraining. I decided to trust the forecast, which may be a risky approach, but also had the best shot at developing the best schedule.
 
