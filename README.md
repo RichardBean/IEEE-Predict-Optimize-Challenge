@@ -67,9 +67,6 @@ Ideas:
 * for reference: with Building 0 outliers fixed (i.e. four 1744.1 kW building 0 values replaced by 100 kW) MASE 0.5121 (3 November) -- hopeful of similar result on phase 2
 * for reference: with Building 0 outliers of training 2020 NOT fixed in training - MASE for Phase TWO = X.XXXX compared to 0.6460 with outliers fixed in training (is this why people's forecasts went so wrong?)
 * for reference: without BOM, Phase 1 -- MASE 0.5650 (4 November)
-* for reference: add GFS three-hour data -- MASE 0.5125 (5 November)
-* for reference: GFS and ECMWF
-* for reference: GFS and ECMWF 4-grid point SSRD leading and lagging 
 
 ### Building Forecast
 
