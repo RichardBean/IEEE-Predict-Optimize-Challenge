@@ -37,7 +37,7 @@ Ideas:
 * I used BOM and ECMWF data together: see the bos.csv file provided, which has daily data from three solar sites in Melbourne (Olympic Park, Oakleigh Metropolitan Golf Club, Moorabbin Airport - 86338, 86088, 86077); 731 rows for 2019 and 2020.
 * BOM solar data was complete for 2019-2020, although the other BOM variables had quite a few values missing. 
 * BOM also has paid data available for solar and other weather variables (hourly). Of course we were not allowed to use this in the competition.
-* The BOM data had to be scraped from the BOM website with some difficulty which was very kludgy - this probably discouraged some competitiors. I only joined after seeing ECMWF data had been added; I use ECMWF data in my solar, electricity and bike-sharing demand forecasting.
+* The BOM data had to be scraped from the BOM website with some difficulty which was very kludgy - this probably discouraged some competitors. I only joined after seeing ECMWF data had been added; I use ECMWF data in my solar, electricity and bike-sharing demand forecasting.
 
 ### Summary of phase 1 forecasting MASE with leaderboard
 * <a href="https://cran.r-project.org/web/packages/mgcv/index.html">GAM</a> - MASE 0.8752 then with <a href="https://cran.r-project.org/web/packages/randomForest/index.html">R randomForest package</a> 0.8165 (10 September) - variables: some leading and lagging solar (SSRD)/temperature, 24/48/72 hr lagging temperature, hour, weekend, day of year, "lockdown" percentage estimate included but not used. Building 0 and 3 high and low data thresholded (b0: omit > 606.5 kW, b3 omit < 193 kW and > 2264 kW)
