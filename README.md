@@ -192,7 +192,7 @@ Estimated total cost (3 November) -- $261,906
 |	large2 	  |  25389         |                 | 
 |	large3    |  26010         |                 |
 |	large4	   |  25849         |                 |
-|	**Total** | **261906**     |                 |
+|	**Total** | **261906**     |  **335107**     |
 
 Issues
 ======
