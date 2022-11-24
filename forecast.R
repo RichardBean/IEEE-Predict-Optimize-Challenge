@@ -820,10 +820,10 @@ ss <- rbind(c("Building0",b0_inter),c("Building1",b1_inter),c("Building3",b3_int
 for (i in 1:12)
   ss[i,-1] <- round(as.numeric(ss[i,-1]),2)
 
-outfile <- paste("rangeraa",PHASE,".csv",sep="")
+outfile <- paste("ranger",PHASE,".csv",sep="")
 write.table(ss,outfile,row.names = F,quote=F,col.names=F,sep=",")
 
-flatfile <- paste("rangeraa",PHASE,".flat",sep="")
+flatfile <- paste("ranger",PHASE,".flat",sep="")
 ss1 <- apply(ss[,-1],2,as.numeric)
 netload <- colSums(ss1[1:6,])-colSums(ss1[7:12,])
 write(netload,flatfile,ncolumns=1)
